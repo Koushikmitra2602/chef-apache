@@ -1,3 +1,8 @@
+#
+# Cookbook:: apache
+# Recipe:: server
+#
+# Copyright:: 2017, The Authors, All Rights Reserved.
 package 'httpd' do
   action :install
   retries 3
