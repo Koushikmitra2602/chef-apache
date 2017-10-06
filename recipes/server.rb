@@ -8,17 +8,11 @@ package 'httpd' do
   retries 3
 end
 
-file '/var/www/html/index.html' do
-  content "<html>
-		<h1>Hello World!! This is my second cookbook!! :)</h1>
-		<body>
-			HOSTNAME : #{node['ec2']['hostname']}<br>
-			PUBLIC IP : #{node['ec2']['public_ipv4']}<br>
-			IPADDRESS : #{node['ipaddress']}<br>
-			CPU : #{node['cpu']['0']['mhz']}<br>
-			MEMORY : #{node['memory']['total']}<br>
-		</body>
-	   </html>"
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+  variables(
+    :name => 'Koushik Mitra'
+  )
   action :create
 end
 
