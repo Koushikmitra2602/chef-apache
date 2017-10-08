@@ -8,6 +8,10 @@ package 'httpd' do
   retries 3
 end
 
+remote_file '/var/www/html/koushik.png' do
+  source 'https://i.ytimg.com/vi/DodvgIMVsfY/maxresdefault.jpg'
+end
+
 template '/var/www/html/index.html' do
   source 'index.html.erb'
   variables(
