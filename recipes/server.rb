@@ -18,9 +18,11 @@ template '/var/www/html/index.html' do
     :name => 'Koushik Mitra'
   )
   action :create
+#  notifies :restart, 'service[httpd]', :immediately
 end
 
 service 'httpd' do
   action [ :enable, :start]
   retries 3
+  subscribes :restart, 'template[/var/www/html/index.html]', :immediately
 end
